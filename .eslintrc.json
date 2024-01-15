@@ -1,8 +1,9 @@
 {
-  "extends": [
-    "plugin:astro/recommended",
-    "plugin:astro/jsx-a11y-recommended"
-  ],
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": "latest"
+  },
+  "extends": ["plugin:astro/recommended", "plugin:astro/jsx-a11y-recommended"],
   "overrides": [
     {
       "files": ["*.astro"],
