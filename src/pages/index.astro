@@ -1,1 +1,17 @@
-<h1>Hello World</h1>
+---
+import RootLayout from "../layouts/RootLayout.astro";
+import { Image } from "astro:assets";
+import avatar from "../assets/avatar.png";
+---
+
+<RootLayout>
+  <main class="flex min-h-full flex-row items-center justify-center gap-12">
+    <Image
+      src={avatar}
+      width="192"
+      height="192"
+      alt="A 48x48 pixel art image of the author."
+    />
+    <p>Hi! I'm Rish. This is my personal website and <a href="/blog">blog</a>.</p>
+  </main>
+</RootLayout>

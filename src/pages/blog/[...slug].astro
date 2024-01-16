@@ -1,0 +1,28 @@
+---
+import RootLayout from "../../layouts/RootLayout.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+    const blogEntries = await getCollection("blog");
+    return blogEntries.map((entry) => ({
+        params: { slug: entry.slug },
+        props: { entry },
+    }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<RootLayout>
+    <div class="min-h-full py-16 flex flex-col items-center">
+        <main class="prose">
+            <h1>{entry.data.title || "Untitled"}</h1>
+            <section>
+                Planted on {entry.data.publishDate.toDateString() || ""}
+                <br />Watered on {entry.data.publishDate.toDateString() || ""}
+            </section>
+            <Content />
+        </main>
+    </div>
+</RootLayout>

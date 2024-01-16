@@ -1,0 +1,24 @@
+---
+import { getCollection } from "astro:content";
+import RootLayout from "../../layouts/RootLayout.astro";
+
+const blogEntries = await getCollection("blog");
+---
+
+<RootLayout>
+  <div class="flex min-h-full flex-col items-center px-2 py-16">
+    <main class="prose prose-a:no-underline">
+      <h1>thoughts, assorted</h1>
+      <div>
+        {
+          blogEntries.map((blogPostEntry) => (
+            <a href={`/blog/${blogPostEntry.slug}`}>
+              <h2>{blogPostEntry.data.title}</h2>
+              <p>{blogPostEntry.data.description}</p>
+            </a>
+          ))
+        }
+      </div>
+    </main>
+  </div>
+</RootLayout>
